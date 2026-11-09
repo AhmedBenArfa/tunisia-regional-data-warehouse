@@ -113,6 +113,7 @@ Fenêtre d'analyse visée : 2014–2024, ajustée selon la couverture réelle de
   - p. 12, tableau 2 : rangs 2021 et 2024 des **5 premiers et des 5 derniers gouvernorats seulement** ;
   - p. 21 à 68, fiches par gouvernorat : rangs 2021 et 2024 de chaque délégation **au sein de son gouvernorat**.
 - **Contenu disponible uniquement en image :** carte des scores en 4 classes (figure 3, p. 11), graphiques radar par facteur. **Le rapport ne publie pas le score ni le rang des 24 gouvernorats.**
+- **Usage retenu (D-007) :** rangs publiés quand ils existent ; sinon, classe de score lue sur la carte (une classe n'est pas un rang). Les éditions 2018 et 2021, publiées séparément, sont considérées comme relevant de l'ancienne méthode (à vérifier) : contexte seulement, pas de comparaison stricte avec 2024. Les rangs 2021 cités dans le rapport 2024 font exception.
 - Anomalie relevée : la fiche de Zaghouan (p. 31) titre ses colonnes « Rang 2021 » et « Rang 2018 », au lieu de « Rang 2024 ».
 - **Rôle :** référence externe de comparaison. L'IDR n'entre pas dans le calcul de l'indice du projet ; il sert à le confronter au classement officiel.
 - **Dossier :** `data/raw/itceq/`

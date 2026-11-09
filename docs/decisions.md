@@ -67,7 +67,7 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
 - **Justification :** principe du moindre privilège. Aucun secret dans le dépôt.
 - **Impact :** `sql/00_creation_base.sql`, groupes de contexte Talend, connexion Power BI.
 
-## D-007 — Portée de la comparaison avec l'IDR (décision ouverte)
+## D-007 — Portée de la comparaison avec l'IDR
 
 - **Date :** 2026-11-09
 - **Problème :** le rapport IDR 2024 de l'ITCEQ ne publie ni le score ni le rang des 24 gouvernorats. On dispose seulement :
@@ -79,8 +79,32 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
   2. Demander à l'ITCEQ le tableau complet (scores et rangs par gouvernorat).
   3. Chercher le tableau complet dans les éditions 2018 et 2021, ou dans d'autres publications de l'ITCEQ.
   4. Reprendre un classement complet publié par la presse (source secondaire, à éviter sauf si elle cite un tableau officiel).
-- **Choix :** à prendre.
-- **Impact :** `dwh.ref_idr_itceq`, `J15_ITCEQ_IDR`, page Power BI de comparaison.
+- **Choix :** options 1 et 3 tout de suite, option 2 en parallèle.
+  - **Option 1 :** charger les 10 rangs publiés (5 premiers, 5 derniers, éditions 2021 et 2024) et la classe de score des 24 gouvernorats lue sur la figure 3. La lecture de la carte donne une **classe** (intervalle de score), **pas un rang** : la comparaison avec l'indice du projet se fait donc par classe pour les 14 gouvernorats sans rang publié. La lecture est manuelle et documentée comme telle (page, figure, légende).
+  - **Option 3 :** rechercher les tableaux complets des éditions 2018 et 2021. On considère qu'elles reposent sur l'**ancienne méthode** : elles servent de contexte seulement et ne permettent pas de comparaison stricte avec 2024. *À vérifier dans chaque édition retrouvée.* Le rapport 2024 cite lui-même des rangs 2021 (tableau 2, annexes) et une série 2012-2024 (tableau 1), ce qui laisse penser que ces valeurs ont été recalculées avec la méthode 2024. Ces chiffres-là, cités dans le rapport 2024, restent comparables.
+  - **Option 2 :** demander à l'ITCEQ le tableau complet de l'édition 2024. La demande et la réponse éventuelle seront consignées ici.
+- **Justification :** on n'utilise que ce qui est publié par l'organisme, en signalant pour chaque valeur s'il s'agit d'un rang exact ou d'une classe. Aucune valeur n'est déduite.
+- **Impact :** `dwh.ref_idr_itceq` (colonnes `rang`, `classe_score_min`, `classe_score_max`, `type_valeur` : rang publié ou classe lue sur la carte, `methode` : ancienne ou 2024), `J15_ITCEQ_IDR`, page Power BI de comparaison.
+
+## D-008 — Définition de l'attribut côtier (proposée, à vérifier)
+
+- **Date :** 2026-11-09
+- **Problème :** l'analyse côte / intérieur suppose de classer chaque gouvernorat.
+- **Options :**
+  1. Définition géographique : le gouvernorat a une façade maritime.
+  2. Définition statistique ou institutionnelle (liste publiée par l'INS ou l'ITCEQ), si elle existe.
+  3. Distance du chef-lieu à la mer.
+- **Proposition :** option 1, vérifiée avec les contours HDX (contact du polygone du gouvernorat avec le trait de côte).
+- **Statut :** en attendant cette vérification, `dim_gouvernorat.cotier` reste vide (colonne facultative). La règle ne sera appliquée qu'une fois le contrôle fait et son résultat consigné ici.
+- **Impact :** `dwh.dim_gouvernorat.cotier`, pages Power BI côte / intérieur.
+
+## D-009 — Nettoyage du nom arabe
+
+- **Date :** 2026-11-09
+- **Problème :** le nom arabe de Siliana dans HDX contient des caractères d'allongement (`سليانـــة`, tatweel U+0640). Ils ne changent pas le mot, mais faussent toute comparaison de chaînes.
+- **Choix :** dans `dwh.dim_gouvernorat.nom_ar`, suppression de tous les caractères U+0640 et des espaces en début et en fin. La forme brute reste dans `staging.stg_hdx_admin2.adm2_name1`. Une contrainte (`ck_nom_ar_sans_tatweel`) refuse tout nom arabe qui en contiendrait encore.
+- **Justification :** la donnée source reste intacte en staging, et la dimension est propre pour le rapprochement.
+- **Impact :** `J01_Referentiel_Geo` (expression du `tMap`), `dwh.dim_gouvernorat`.
 
 ---
 
