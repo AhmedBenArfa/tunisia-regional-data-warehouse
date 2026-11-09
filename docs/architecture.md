@@ -34,4 +34,19 @@ Relevé le 9 novembre 2026.
 | Power BI Desktop | installé | `C:\Program Files\Microsoft Power BI Desktop` |
 | Git | installé | |
 
+## Configuration
+
+Un seul fichier de configuration locale, `.env`, à la racine du dépôt. Il est ignoré par git ; le modèle versionné est `.env.example`. Il est lu par :
+
+- **psql** et les scripts Python : les variables `PG*` sont les variables standard de PostgreSQL (libpq) ;
+- **Talend** : chargement implicite du contexte (paramètres du projet, *Implicit tContextLoad*), fichier lu au lancement de chaque job. Les variables du groupe de contexte `ctx_dwh` portent les mêmes noms que les clés du fichier.
+
+Le fichier ne contient que des lignes `CLE=valeur`, sans commentaire.
+
+| Clé | Rôle |
+|---|---|
+| `PGHOST`, `PGPORT`, `PGDATABASE` | Serveur et base PostgreSQL |
+| `PGUSER`, `PGPASSWORD` | Utilisateur applicatif `dwh_user` (décision D-006) |
+| `RACINE_PROJET` | Chemin absolu du dépôt, base de tous les chemins de fichiers des jobs |
+
 Remarque : Talend Open Studio n'est plus maintenu depuis janvier 2024. La version 8.0.1 reste utilisable pour ce projet ; des pistes de migration sont présentées dans le README.
