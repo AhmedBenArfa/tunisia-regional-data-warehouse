@@ -1,0 +1,9 @@
+# Normalisation des fins de ligne : LF dans le dépôt, conversion automatique à l'extraction.
+* text=auto
+
+# Fichiers binaires
+*.xlsx binary
+*.pdf  binary
+*.zip  binary
+*.pbix binary
+*.png  binary

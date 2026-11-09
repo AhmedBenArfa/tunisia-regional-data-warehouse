@@ -116,7 +116,8 @@ Fenêtre d'analyse visée : 2014–2024, ajustée selon la couverture réelle de
 - **Usage retenu (D-007) :** rangs publiés quand ils existent ; sinon, classe de score lue sur la carte (une classe n'est pas un rang). Les éditions 2018 et 2021, publiées séparément, sont considérées comme relevant de l'ancienne méthode (à vérifier) : contexte seulement, pas de comparaison stricte avec 2024. Les rangs 2021 cités dans le rapport 2024 font exception.
 - Anomalie relevée : la fiche de Zaghouan (p. 31) titre ses colonnes « Rang 2021 » et « Rang 2018 », au lieu de « Rang 2024 ».
 - **Rôle :** référence externe de comparaison. L'IDR n'entre pas dans le calcul de l'indice du projet ; il sert à le confronter au classement officiel.
-- **Dossier :** `data/raw/itceq/`
+- **Droits :** le rapport est la propriété de l'ITCEQ ; toute reproduction, intégrale ou partielle, sans autorisation écrite est interdite (p. 2). Conséquences pour le projet : le PDF n'est jamais versionné (dossier exclu dans `.gitignore`), seules les valeurs nécessaires à la comparaison sont reprises, toujours avec leur référence (page, tableau). La demande prévue à l'ITCEQ (D-007, option 2) inclura une demande d'autorisation de réutilisation.
+- **Dossier :** `data/raw/itceq/` (non versionné)
 
 ### 9. Open-Meteo — API de géocodage
 

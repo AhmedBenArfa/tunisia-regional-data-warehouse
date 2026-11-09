@@ -17,11 +17,14 @@ powerbi/**/localSettings.json
 *.local.properties
 config/local/
 
+# Publications dont la reproduction est interdite sans autorisation écrite.
+# Jamais versionnées, quelle que soit leur taille (voir docs/sources.md).
+data/raw/itceq/
+
 # Fichiers bruts de plus de 10 Mo : non versionnés.
 # URL et empreinte SHA-256 dans data/manifest_telechargements.csv.
 # Les entrées ci-dessous sont ajoutées par scripts/telecharger.py.
 data/raw/hdx/tun_admin_boundaries.shp.zip
-data/raw/itceq/indice-dev-regional-2024.pdf
 
 # Système
 Thumbs.db
