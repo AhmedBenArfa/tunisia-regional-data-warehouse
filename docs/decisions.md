@@ -47,8 +47,9 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
   2. Cinq districts de 2023.
 - **Choix :** les cinq districts de 2023 sont l'attribut principal (`district`). Les six régions HDX restent un attribut secondaire (`region_hdx_pcode`, `region_hdx_nom`).
 - **Justification :** c'est le découpage institutionnel en vigueur, et celui que l'INS utiliserait dans le RGPH 2024.
-- **À vérifier avant chargement :** la composition exacte des districts doit venir d'une source identifiée (texte officiel ou tableaux du RGPH 2024). On ne la saisit pas de mémoire. Il faut aussi confirmer que le RGPH 2024 utilise bien ce découpage.
-- **Impact :** `dwh.dim_gouvernorat`, `data/reference/` (table gouvernorat → district avec sa source).
+- **Source de la composition :** décret n° 2023-589 du 21 septembre 2023, article premier (JORT n° 108 du 22 septembre 2023). Transcription : `data/reference/gouvernorat_district.csv`, contrôlée contre HDX (24 P-codes, aucun absent ni inconnu ; 4, 6, 6, 4 et 4 gouvernorats par district).
+- **Reste à vérifier :** que le RGPH 2024 utilise bien ce découpage.
+- **Impact :** `dwh.dim_gouvernorat`, `data/reference/gouvernorat_district.csv`.
 
 ## D-005 — Versionnement des fichiers bruts
 
@@ -65,6 +66,21 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
 - **Choix :** un rôle `dwh_user`, propriétaire de la base `tunisia_dwh` et de ses schémas, sans droit d'administration du serveur. Le superutilisateur `postgres` ne sert qu'à exécuter `sql/00_creation_base.sql`. Les identifiants sont rangés dans un fichier `.env` ignoré par git (modèle : `.env.example`).
 - **Justification :** principe du moindre privilège. Aucun secret dans le dépôt.
 - **Impact :** `sql/00_creation_base.sql`, groupes de contexte Talend, connexion Power BI.
+
+## D-007 — Portée de la comparaison avec l'IDR (décision ouverte)
+
+- **Date :** 2026-11-09
+- **Problème :** le rapport IDR 2024 de l'ITCEQ ne publie ni le score ni le rang des 24 gouvernorats. On dispose seulement :
+  - des rangs 2021 et 2024 des 5 premiers et des 5 derniers gouvernorats (tableau 2, p. 12) ;
+  - de la classe de score de chaque gouvernorat (4 classes), lisible uniquement sur une carte (figure 3, p. 11) ;
+  - des rangs des délégations au sein de chaque gouvernorat (annexes).
+- **Options :**
+  1. Comparer sur les 10 rangs publiés et sur les 4 classes, avec une lecture manuelle de la carte documentée comme telle.
+  2. Demander à l'ITCEQ le tableau complet (scores et rangs par gouvernorat).
+  3. Chercher le tableau complet dans les éditions 2018 et 2021, ou dans d'autres publications de l'ITCEQ.
+  4. Reprendre un classement complet publié par la presse (source secondaire, à éviter sauf si elle cite un tableau officiel).
+- **Choix :** à prendre.
+- **Impact :** `dwh.ref_idr_itceq`, `J15_ITCEQ_IDR`, page Power BI de comparaison.
 
 ---
 

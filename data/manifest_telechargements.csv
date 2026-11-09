@@ -1,3 +1,5 @@
 source,fichier,url,telecharge_le_utc,taille_octets,sha256
 hdx,data/raw/hdx/tun_admin_boundaries.xlsx,https://data.humdata.org/dataset/e47eda48-8f83-4858-b739-dbffb8a50c47/resource/93e66864-46d9-4b3c-bbc7-ba11cabc977f/download/tun_admin_boundaries.xlsx,2026-11-09T18:01:45Z,848163,6c5e27c8be2181ded9e24746a37e41f99a87792ca0b41a6f8622291f6d9617e5
 hdx,data/raw/hdx/tun_admin_boundaries.shp.zip,https://data.humdata.org/dataset/e47eda48-8f83-4858-b739-dbffb8a50c47/resource/d70d07db-a11c-4b83-9ae6-2f301a06fdd4/download/tun_admin_boundaries.shp.zip,2026-11-09T18:01:57Z,47691388,8f2c0e6b09e374d9602cbbb6955b28dc82a5cbd90fb305cd6124f820b10b8827
+itceq,data/raw/itceq/indice-dev-regional-2024.pdf,https://www.itceq.tn/wp-content/uploads/2026/07/indice-dev-regional-2024.pdf,2026-11-09T18:14:20Z,17929363,828e1eee94f58a8ad3cec2306496cb93e29c9ef394e7fc8b5d7224c5617b384b
+districts,data/raw/districts/Journal1082023.pdf,https://inkyfada.com/wp-content/uploads/2023/12/Journal1082023.pdf,2026-11-09T18:15:12Z,792227,ab30e6403d9f4516e2147441c2e5c06d7bdd6edd170121cec6f23723e5ab5775

@@ -21,6 +21,7 @@ config/local/
 # URL et empreinte SHA-256 dans data/manifest_telechargements.csv.
 # Les entrées ci-dessous sont ajoutées par scripts/telecharger.py.
 data/raw/hdx/tun_admin_boundaries.shp.zip
+data/raw/itceq/indice-dev-regional-2024.pdf
 
 # Système
 Thumbs.db
