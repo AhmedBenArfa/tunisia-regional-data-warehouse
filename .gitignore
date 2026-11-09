@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Talend : fichiers temporaires et métadonnées d'espace de travail
+talend/**/.metadata/
+talend/**/temp/
+*.log
+
+# Power BI : cache local
+powerbi/**/.pbi/cache.abf
+powerbi/**/localSettings.json
+
+# Secrets et configuration locale
+.env
+*.local.properties
+config/local/
+
+# Fichiers bruts de plus de 10 Mo : non versionnés.
+# URL et empreinte SHA-256 dans data/manifest_telechargements.csv.
+# Les entrées ci-dessous sont ajoutées par scripts/telecharger.py.
+data/raw/hdx/tun_admin_boundaries.shp.zip
+
+# Système
+Thumbs.db
+desktop.ini
+.DS_Store
