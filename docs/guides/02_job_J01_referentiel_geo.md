@@ -42,6 +42,10 @@ lire_manifeste  ──row4 (lookup)──┘  └───rejet_controle──�
 valider_dwh  (tDBCommit, ferme la connexion)
 ```
 
+![Canevas du job J01_Referentiel_Geo dans Talend Studio](../img/J01_job.png)
+
+*Le job dans Talend Studio : sous-job 1 en haut (Excel → staging), sous-job 2 en bas (staging → dimension et rejets).*
+
 **Pourquoi passer par `staging` ?** La copie en staging est fidèle à la source, sans aucune transformation (le nom arabe de Siliana y garde ses caractères d'allongement). En cas de doute sur une valeur de la dimension, on peut toujours comparer avec ce qui a été lu, ligne par ligne, avec le numéro de ligne du fichier d'origine.
 
 **Pourquoi une seule connexion et un commit explicite ?** Tous les composants partagent la même session PostgreSQL, ouverte une fois. Les écritures ne sont validées qu'au `tDBCommit` : si le job échoue avant, rien n'est enregistré à moitié.
@@ -169,6 +173,10 @@ Les fichiers CSV sont forcés en fin de ligne LF par `.gitattributes`. Sans cela
 
 ### 4.3 `controler_gouvernorat` — tMap
 
+![Éditeur du tMap controler_gouvernorat](../img/J01_tmap_controler_gouvernorat.png)
+
+*L'éditeur du tMap : le flux principal et les deux lookups à gauche, les variables au centre, les trois sorties à droite.*
+
 **Jointures.** Les deux lookups sont en `Inner Join` / `Unique match`, chargés une fois :
 
 | Lookup | Clé |
@@ -265,6 +273,10 @@ Tous ont « Arrêter en cas d'erreur » coché.
 ### 4.6 Résultat vérifié (exécution du 10 novembre 2026, 01:15)
 
 Console : code de sortie 0. Canevas : 24 lignes lues en staging, 24 vers `dim`, 0 sur chaque flux de rejet.
+
+![Exécution du job : nombre de lignes sur chaque lien](../img/J01_execution.png)
+
+*Exécution du 10 novembre 2026 (01:30) : 24 lignes lues, 24 vers la dimension, 0 sur les deux flux de rejet.*
 
 Contrôles en base (`sql/controles/controle_J01.sql`) et comparaison avec les fichiers sources :
 

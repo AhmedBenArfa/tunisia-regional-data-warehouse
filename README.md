@@ -109,6 +109,10 @@ Les définitions de colonnes sont dans les scripts [`sql/`](sql/) (commentaires 
 
 Les fichiers Markdown sont la référence ; les PDF en sont générés par `python scripts/generer_pdf.py`.
 
+![Job J01_Referentiel_Geo après exécution : 24 gouvernorats chargés, 0 rejet](docs/img/J01_execution.png)
+
+*Le premier job, `J01_Referentiel_Geo`, après exécution : 24 gouvernorats chargés dans la dimension, 0 rejet ([guide détaillé](docs/guides/02_job_J01_referentiel_geo.md)).*
+
 ## Avancement
 
 - [x] **Phase 0 — Vérifications** : environnement, inventaire, accès aux sources, rapport IDR 2024, découpage en districts
@@ -119,7 +123,7 @@ Les fichiers Markdown sont la référence ; les PDF en sont générés par `pyth
 - [ ] Phase 4 — Tourisme : extraction PDF, pont zones → gouvernorats
 - [ ] Phase 5 — Qualité et orchestration : job maître, audit, rapport qualité
 - [ ] Phase 6 — Power BI : carte, indice composite, côte / intérieur, tourisme, comparaison avec l'IDR
-- [ ] Phase 7 — Publication
+- [ ] Phase 7 — Publication : schéma d'architecture, canevas des jobs avec statistiques d'exécution, rapport qualité, pages Power BI, carrousel PDF et post ([décision D-011](docs/decisions.md))
 
 ### Jobs Talend prévus
 

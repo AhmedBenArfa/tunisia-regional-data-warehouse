@@ -118,6 +118,30 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
 - **Justification :** une seule source à tenir à jour, des diffs lisibles dans git, une mise en page soignée pour la lecture hors ligne, sans logiciel supplémentaire (le navigateur est déjà installé).
 - **Impact :** `docs/guides/`, `docs/pdf/`, `scripts/generer_pdf.py`, `requirements.txt`.
 
+## D-011 — Images de la documentation et supports de publication
+
+- **Date :** 2026-11-10
+- **Problème :** les guides, le README et la publication finale (réseau professionnel) ont besoin d'images du travail réalisé. Des captures d'écran brutes contiennent le bureau et la barre des tâches, et toute image retouchée ou reconstituée affaiblirait la crédibilité du projet.
+- **Options :**
+  1. Captures d'écran complètes, telles quelles.
+  2. Schémas redessinés à la main pour illustrer les jobs.
+  3. Images réelles uniquement, tirées des fichiers produits par les outils ou des captures d'exécution, simplement recadrées.
+- **Choix :** option 3.
+  - **Canevas et tMap** : images PNG extraites du fichier `.screenshot` que Talend Studio enregistre avec chaque job exporté (`talend/TUNISIA_DWH/process/`). Elles montrent le job tel qu'il a été construit, sans élément du bureau.
+  - **Exécution** : capture d'écran prise après une exécution réussie, recadrée sur le canevas pour garder le nombre de lignes affiché sur chaque lien.
+  - Rangement dans `docs/img/`, nommage `Jxx_job.png`, `Jxx_tmap_<nom>.png`, `Jxx_execution.png`. Aucune modification du contenu d'une image : recadrage seulement.
+  - À la fin de chaque job : les trois images sont produites, insérées dans le guide du job, et le PDF est régénéré.
+- **Supports prévus pour la publication finale (phase 7)** :
+  1. Schéma d'architecture de la chaîne (sources → Talend → PostgreSQL → Power BI).
+  2. Canevas des principaux jobs Talend, avec leurs statistiques d'exécution.
+  3. Rapport qualité (complétude par source et par année, rejets, contrôles de totaux).
+  4. Pages du rapport Power BI : carte, indice composite, côte / intérieur, tourisme, comparaison avec l'IDR.
+  5. Carrousel PDF de quelques pages, qui résume le projet (problème, sources, intégration, résultats, limites).
+  6. Texte du post, qui décrit exactement ce qui a été fait, y compris les étapes hors Talend.
+  - Les captures de Power BI seront prises fenêtre agrandie, sans barre des tâches.
+- **Justification :** des images authentiques et reproductibles (régénérées à chaque export du job), cohérentes avec le principe de présentation honnête du projet.
+- **Impact :** `docs/img/`, guides des jobs, `README.md`, `scripts/generer_pdf.py`, phase 7 du projet.
+
 ---
 
 <!-- Modèle d'entrée

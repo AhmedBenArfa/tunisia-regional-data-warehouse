@@ -68,6 +68,8 @@ th { background: #0b3d5c; color: #fff; text-align: left; padding: 5px 7px; }
 td { border: 1px solid #d0d7de; padding: 4px 7px; vertical-align: top; }
 tbody tr:nth-child(even) td { background: #f6f8fa; }
 blockquote { margin: 8px 0; padding: 4px 12px; border-left: 4px solid #c8102e; background: #fdf3f4; color: #444; }
+img { max-width: 100%; border: 1px solid #d0d7de; border-radius: 4px; margin: 6px 0; break-inside: avoid; }
+p em { color: #555; }
 hr { border: none; border-top: 1px solid #d0d7de; margin: 14px 0; }
 .genere { font-size: 8pt; color: #888; margin-top: 24px; border-top: 1px solid #d0d7de; padding-top: 4px; }
 """
@@ -96,12 +98,23 @@ def liens_vers_pdf(contenu_html: str) -> str:
     return re.sub(r'href="([^"]+?\.md(?:#[^"]*)?)"', remplacer, contenu_html)
 
 
+def images_absolues(contenu_html: str, dossier: Path) -> str:
+    """La page HTML est imprimée depuis un dossier temporaire : les images sont référencées par leur chemin absolu."""
+    def remplacer(m: re.Match) -> str:
+        cible = m.group(1)
+        if cible.startswith(("http://", "https://", "data:", "file:")):
+            return m.group(0)
+        return f'src="{(dossier / cible).resolve().as_uri()}"'
+    return re.sub(r'src="([^"]+)"', remplacer, contenu_html)
+
+
 def vers_html(source: Path) -> str:
     texte = source.read_text(encoding="utf-8")
     titre = next((l[2:].strip() for l in texte.splitlines() if l.startswith("# ")), source.stem)
     titre = re.sub(r"[`*]", "", titre)
     corps = markdown.markdown(texte, extensions=["tables", "fenced_code", "sane_lists"], output_format="html5")
     corps = liens_vers_pdf(corps)
+    corps = images_absolues(corps, source.parent)
     relatif = source.relative_to(RACINE).as_posix()
     pied = f'<p class="genere">Version PDF de <code>{html.escape(relatif)}</code>, générée le {date.today():%d/%m/%Y}.</p>'
     return (
