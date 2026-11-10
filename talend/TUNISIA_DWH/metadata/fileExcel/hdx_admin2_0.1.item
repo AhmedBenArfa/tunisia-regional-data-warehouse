@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_yg05EdxzEfG6-KcbDVsHUA" name="hdx_admin2" dataPackage="_yg05EtxzEfG6-KcbDVsHUA" Server="Localhost 127.0.0.1" FilePath="D:/Projet/tunisia-regional-data-warehouse/data/raw/hdx/tun_admin_boundaries.xlsx" Encoding="UTF-8" UseHeader="true" HeaderValue="1" FirstLineCaption="true" SheetName="tun_admin0" firstColumn="1" lastColumn="" thousandSeparator="','" decimalSeparator="'.'" sheetList="tun_admin2:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+    <sheetColumns>E</sheetColumns>
+    <sheetColumns>F</sheetColumns>
+    <sheetColumns>G</sheetColumns>
+    <sheetColumns>H</sheetColumns>
+    <sheetColumns>I</sheetColumns>
+    <sheetColumns>J</sheetColumns>
+    <sheetColumns>K</sheetColumns>
+    <sheetColumns>L</sheetColumns>
+    <sheetColumns>M</sheetColumns>
+    <sheetColumns>N</sheetColumns>
+    <sheetColumns>O</sheetColumns>
+    <sheetColumns>P</sheetColumns>
+    <sheetColumns>Q</sheetColumns>
+    <sheetColumns>R</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_yg05EtxzEfG6-KcbDVsHUA" name="default" dataManager="_yg05EdxzEfG6-KcbDVsHUA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_yg05E9xzEfG6-KcbDVsHUA" id="_rV8cMNxyEfG6-KcbDVsHUA" comment="Feuille tun_admin2, 26 colonnes, 24 gouvernorats" label="hdx_admin2.">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05FNxzEfG6-KcbDVsHUA" label="adm2_name" length="12" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05FdxzEfG6-KcbDVsHUA" label="adm2_name1" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05FtxzEfG6-KcbDVsHUA" label="adm2_name2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05F9xzEfG6-KcbDVsHUA" label="adm2_name3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05GNxzEfG6-KcbDVsHUA" label="adm2_pcode" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05GdxzEfG6-KcbDVsHUA" label="adm1_name" length="11" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05GtxzEfG6-KcbDVsHUA" label="adm1_name1" length="13" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05G9xzEfG6-KcbDVsHUA" label="adm1_name2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05HNxzEfG6-KcbDVsHUA" label="adm1_name3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05HdxzEfG6-KcbDVsHUA" label="adm1_pcode" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05HtxzEfG6-KcbDVsHUA" label="adm0_name" length="7" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05H9xzEfG6-KcbDVsHUA" label="adm0_name1" length="4" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05INxzEfG6-KcbDVsHUA" label="adm0_name2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05IdxzEfG6-KcbDVsHUA" label="adm0_name3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05ItxzEfG6-KcbDVsHUA" label="adm0_pcode" length="2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05I9xzEfG6-KcbDVsHUA" label="valid_on" length="-1" talendType="id_Date" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05JNxzEfG6-KcbDVsHUA" label="valid_to" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05JdxzEfG6-KcbDVsHUA" label="area_sqkm" length="-1" talendType="id_Double" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05JtxzEfG6-KcbDVsHUA" name="version" label="version" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05J9xzEfG6-KcbDVsHUA" name="lang" label="lang" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05KNxzEfG6-KcbDVsHUA" name="lang1" label="lang1" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05KdxzEfG6-KcbDVsHUA" name="lang2" label="lang2" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05KtxzEfG6-KcbDVsHUA" name="lang3" label="lang3" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05K9xzEfG6-KcbDVsHUA" name="adm2_ref_name" label="adm2_ref_name" talendType="id_String"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05LNxzEfG6-KcbDVsHUA" name="center_lat" label="center_lat" length="-1" talendType="id_Double"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_yg05LdxzEfG6-KcbDVsHUA" name="center_lon" label="center_lon" length="-1" talendType="id_Double"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

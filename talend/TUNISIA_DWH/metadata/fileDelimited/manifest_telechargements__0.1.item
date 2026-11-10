@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_xxljwNyPEfG-qotz4pjI2w" name="manifest_telechargements." dataPackage="_xxljwdyPEfG-qotz4pjI2w" Server="Localhost 127.0.0.1" FilePath="D:/Projet/tunisia-regional-data-warehouse/data/manifest_telechargements.csv" Encoding="UTF-8" FieldSeparatorValue="&quot;,&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="2" FirstLineCaption="true" FieldSeparatorType="Comma"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_xxljwdyPEfG-qotz4pjI2w" name="default" dataManager="_xxljwNyPEfG-qotz4pjI2w">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_xxljwtyPEfG-qotz4pjI2w" id="_3ucZMNyOEfG-qotz4pjI2w" label="manifest_telechargements.">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_xxljw9yPEfG-qotz4pjI2w" label="source" length="9" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_xxljxNyPEfG-qotz4pjI2w" label="fichier" length="43" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_xxljxdyPEfG-qotz4pjI2w" label="url" length="153" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_xxljxtyPEfG-qotz4pjI2w" label="telecharge_le_utc" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_xxljx9yPEfG-qotz4pjI2w" label="taille_octets" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_xxljyNyPEfG-qotz4pjI2w" label="sha256" length="64" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

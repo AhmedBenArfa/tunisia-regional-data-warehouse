@@ -106,6 +106,18 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
 - **Justification :** la donnée source reste intacte en staging, et la dimension est propre pour le rapprochement.
 - **Impact :** `J01_Referentiel_Geo` (expression du `tMap`), `dwh.dim_gouvernorat`.
 
+## D-010 — Documentation : Markdown source, PDF généré
+
+- **Date :** 2026-11-09
+- **Problème :** la documentation doit être lisible sur GitHub et partageable hors de GitHub (entretien, réseau professionnel), sans maintenir deux versions.
+- **Options :**
+  1. Markdown seul.
+  2. Documents rédigés directement en PDF ou en traitement de texte.
+  3. Markdown comme source unique, PDF générés par script.
+- **Choix :** option 3. `scripts/generer_pdf.py` convertit les fichiers Markdown en HTML puis imprime en PDF avec Edge ou Chrome sans interface, dans `docs/pdf/`. Les PDF sont versionnés et régénérés à chaque mise à jour de la documentation.
+- **Justification :** une seule source à tenir à jour, des diffs lisibles dans git, une mise en page soignée pour la lecture hors ligne, sans logiciel supplémentaire (le navigateur est déjà installé).
+- **Impact :** `docs/guides/`, `docs/pdf/`, `scripts/generer_pdf.py`, `requirements.txt`.
+
 ---
 
 <!-- Modèle d'entrée

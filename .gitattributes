@@ -1,6 +1,10 @@
 # Normalisation des fins de ligne : LF dans le dépôt, conversion automatique à l'extraction.
 * text=auto
 
+# Fichiers lus par les jobs Talend (séparateur de lignes "\n") : LF sur tous les systèmes
+*.csv text eol=lf
+.env* text eol=lf
+
 # Fichiers binaires
 *.xlsx binary
 *.pdf  binary

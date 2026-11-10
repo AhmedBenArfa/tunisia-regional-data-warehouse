@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_KbbfwNxuEfG6-KcbDVsHUA" confirmationNeeded="false" name="DEV">
+  <contextParameter xmi:id="_KbbfwdxuEfG6-KcbDVsHUA" comment="" name="PGHOST" prompt="PGHOST?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="localhost"/>
+  <contextParameter xmi:id="_Kbct4NxuEfG6-KcbDVsHUA" comment="" name="PGPORT" prompt="PGPORT?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="5432"/>
+  <contextParameter xmi:id="_Kbct4dxuEfG6-KcbDVsHUA" comment="" name="PGDATABASE" prompt="PGDATABASE?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="tunisia_dwh"/>
+  <contextParameter xmi:id="_Kbct4txuEfG6-KcbDVsHUA" comment="" name="PGUSER" prompt="PGUSER?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="dwh_user"/>
+  <contextParameter xmi:id="_Kbct49xuEfG6-KcbDVsHUA" comment="" name="PGPASSWORD" prompt="PGPASSWORD?" promptNeeded="false" repositoryContextId="built-in" type="id_Password" value=""/>
+  <contextParameter xmi:id="_Z4B7MNxvEfG6-KcbDVsHUA" comment="" name="PGSCHEMA" prompt="PGSCHEMA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+  <contextParameter xmi:id="_Z4B7MdxvEfG6-KcbDVsHUA" comment="" name="PGPARAMS" prompt="PGPARAMS?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+</talendfile:ContextType>

@@ -86,8 +86,8 @@ Base `tunisia_dwh`, schémas `staging`, `dwh` et `audit`.
 
 | Table | Contenu | État |
 |---|---|---|
-| `dwh.dim_gouvernorat` | 24 gouvernorats : P-code, noms français, arabe et sans accents, district, région, superficie, coordonnées | Créée |
-| `staging.stg_hdx_admin2` | Copie fidèle de la feuille HDX des gouvernorats | Créée |
+| `dwh.dim_gouvernorat` | 24 gouvernorats : P-code, noms français, arabe et sans accents, district, région, superficie, coordonnées | **Chargée** par J01 (24 lignes, 0 rejet) ; chef-lieu et côtier à venir |
+| `staging.stg_hdx_admin2` | Copie fidèle de la feuille HDX des gouvernorats | Chargée par J01 |
 | `audit.etl_run_log`, `audit.etl_rejets` | Exécutions et rejets | Créées |
 | `dwh.ref_synonyme_geo` | Libellé source → P-code, par source et par tableau | Prévue |
 | `dwh.dim_zone_touristique`, `dwh.bridge_zone_gouvernorat` | Pont zones touristiques → gouvernorats | Prévues |
@@ -97,11 +97,23 @@ Base `tunisia_dwh`, schémas `staging`, `dwh` et `audit`.
 
 Les définitions de colonnes sont dans les scripts [`sql/`](sql/) (commentaires SQL) ; un dictionnaire de données suivra dans `docs/`.
 
+## Documentation
+
+| Document | Contenu | PDF |
+|---|---|---|
+| [Guide 1 — Mise en place](docs/guides/01_mise_en_place.md) | Base PostgreSQL, configuration `.env`, projet Talend (contextes, connexion, métadonnées), pièges rencontrés | [PDF](docs/pdf/01_mise_en_place.pdf) |
+| [Guide 2 — Job J01](docs/guides/02_job_J01_referentiel_geo.md) | Construction du job du référentiel géographique, composant par composant, et résultats vérifiés | [PDF](docs/pdf/02_job_J01_referentiel_geo.pdf) |
+| [Architecture](docs/architecture.md) | Chaîne de traitement, environnement, configuration | [PDF](docs/pdf/architecture.pdf) |
+| [Sources](docs/sources.md) | Inventaire, contenu exploitable, droits | [PDF](docs/pdf/sources.pdf) |
+| [Décisions](docs/decisions.md) | Journal des choix de modélisation et de mapping | [PDF](docs/pdf/decisions.pdf) |
+
+Les fichiers Markdown sont la référence ; les PDF en sont générés par `python scripts/generer_pdf.py`.
+
 ## Avancement
 
 - [x] **Phase 0 — Vérifications** : environnement, inventaire, accès aux sources, rapport IDR 2024, découpage en districts
 - [x] Base, schémas, tables d'audit et dimension gouvernorat (DDL)
-- [ ] **Phase 1 — Référentiel géographique** : job `J01_Referentiel_Geo` (en cours), table de synonymes
+- [ ] **Phase 1 — Référentiel géographique** : job `J01_Referentiel_Geo` **terminé et vérifié** ([guide](docs/guides/02_job_J01_referentiel_geo.md)), table de synonymes à venir
 - [ ] Phase 2 — Sources simples : agridata, Open-Meteo
 - [ ] Phase 3 — INS : recensements, annuaires, portail de données
 - [ ] Phase 4 — Tourisme : extraction PDF, pont zones → gouvernorats
@@ -114,7 +126,7 @@ Les définitions de colonnes sont dans les scripts [`sql/`](sql/) (commentaires 
 | Job | Rôle |
 |---|---|
 | `J00_Master` | Orchestration, contextes, gestion d'erreurs |
-| `J01_Referentiel_Geo` | Référentiel HDX → `dim_gouvernorat` |
+| `J01_Referentiel_Geo` | Référentiel HDX → `staging` → `dim_gouvernorat`, avec contrôles et flux de rejets — **terminé** |
 | `J02_Synonymes` | Table de synonymes et contrôle |
 | `J10` à `J15` | Une ingestion par source (agridata, recensements, annuaires, tourisme, météo, IDR) |
 | `J20_Dimensions`, `J30_Fact` | Dimensions et chargement incrémental des faits |
@@ -145,6 +157,8 @@ psql -f sql/03_dwh_dim_gouvernorat.sql
 python scripts/telecharger.py hdx <url>
 ```
 
+**Talend.** Le projet exporté se trouve dans [`talend/TUNISIA_DWH/`](talend/TUNISIA_DWH/) (jobs, contextes, connexion, métadonnées). Dans Talend Open Studio 8.0.1 : *Importer des éléments*, choisir ce répertoire, cocher tous les éléments. Le mot de passe n'est pas dans l'export : il est lu dans `.env` à chaque exécution (chargement implicite du contexte, voir le [Guide 1](docs/guides/01_mise_en_place.md)). Le chemin du fichier `.env` est défini dans les paramètres du projet Talend : à adapter si le dépôt est cloné ailleurs.
+
 Le fichier `.env` est la configuration unique, partagée par psql, Python et Talend : voir [`docs/architecture.md`](docs/architecture.md).
 
 ## Structure du dépôt
@@ -156,9 +170,11 @@ Le fichier `.env` est la configuration unique, partagée par psql, Python et Tal
 │   ├── reference/                    tables de correspondance établies à la main, sourcées
 │   └── manifest_telechargements.csv  URL, date et SHA-256 de chaque fichier brut
 ├── scripts/                          téléchargement, extraction, contrôles (Python)
-├── sql/                              DDL, contrôles qualité, vues
+├── sql/                              DDL ; controles/ : requêtes de vérification après chaque job
 ├── talend/                           export des jobs
 ├── docs/                             sources, décisions, architecture, dictionnaire, qualité
+│   ├── guides/                       guides de construction pas à pas (mise en place, un guide par job)
+│   └── pdf/                          version PDF de la documentation (générée)
 └── powerbi/                          rapport
 ```
 

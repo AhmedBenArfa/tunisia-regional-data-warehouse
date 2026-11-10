@@ -6,7 +6,7 @@ Inventaire établi le 9 novembre 2026. Chaque source est suivie jusqu'au fichier
 
 | # | Source | Contenu utile | Période | Format | Granularité | Statut |
 |---|---|---|---|---|---|---|
-| 1 | Référentiel administratif INS / OCHA (HDX) | P-codes, noms anglais et arabes, contours | Découpage 2022 | XLSX, SHP, GDB | Gouvernorat et niveaux inférieurs | Vérifié |
+| 1 | Référentiel administratif INS / OCHA (HDX) | P-codes, noms français, arabes et sans accents, contours | Découpage 2022 | XLSX, SHP, GDB | Gouvernorat et niveaux inférieurs | Vérifié |
 | 2 | INS — RGPH 2014 et 2024 | Population, âge, sexe, chômage, conditions de vie | 2014, 2024 | PDF + tableaux | Gouvernorat, délégation | En partie vérifié |
 | 3 | INS — Banque de données statistiques | Indicateurs socio-économiques, export massif, API | À confirmer | XLSX, TXT, MDB, DBF + API XML | District, gouvernorat, délégation | En ligne (HTTP seulement) ; couverture régionale à explorer |
 | 4 | INS — Annuaire statistique | Éducation, santé, équipements | 5 ans par édition | PDF | Gouvernorat | En partie vérifié |

@@ -1,0 +1,28 @@
+[ {
+  "baseItem" : {
+    "id" : "__X1IENxwEfG6-KcbDVsHUA",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_KbQgoNxuEfG6-KcbDVsHUA",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_iHny0NxvEfG6-KcbDVsHUA",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_bZqigNxuEfG6-KcbDVsHUA",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "_xxjukNyPEfG-qotz4pjI2w - manifest_telechargements.",
+    "version" : "Latest",
+    "type" : "schema"
+  }, {
+    "id" : "_yg05ENxzEfG6-KcbDVsHUA - hdx_admin2.",
+    "version" : "Latest",
+    "type" : "schema"
+  } ]
+} ]

@@ -1,0 +1,29 @@
+{
+  "itemId" : "_bZqigNxuEfG6-KcbDVsHUA",
+  "contextList" : [ {
+    "contextName" : "DEV",
+    "repoId" : "_KbQgoNxuEfG6-KcbDVsHUA",
+    "parameterList" : [ {
+      "id" : "_KbbfwdxuEfG6-KcbDVsHUA",
+      "name" : "PGHOST"
+    }, {
+      "id" : "_Kbct4NxuEfG6-KcbDVsHUA",
+      "name" : "PGPORT"
+    }, {
+      "id" : "_Kbct4dxuEfG6-KcbDVsHUA",
+      "name" : "PGDATABASE"
+    }, {
+      "id" : "_Kbct4txuEfG6-KcbDVsHUA",
+      "name" : "PGUSER"
+    }, {
+      "id" : "_Kbct49xuEfG6-KcbDVsHUA",
+      "name" : "PGPASSWORD"
+    }, {
+      "id" : "_Z4B7MNxvEfG6-KcbDVsHUA",
+      "name" : "PGSCHEMA"
+    }, {
+      "id" : "_Z4B7MdxvEfG6-KcbDVsHUA",
+      "name" : "PGPARAMS"
+    } ]
+  } ]
+}

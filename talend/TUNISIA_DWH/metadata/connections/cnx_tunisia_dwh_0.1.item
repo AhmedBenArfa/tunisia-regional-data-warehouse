@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.relational="http:///orgomg/cwm/resource/relational.ecore">
+  <TalendMetadata:DatabaseConnection xmi:id="_QDI5sNxvEfG6-KcbDVsHUA" name="cnx_tunisia_dwh" id="_bZqigNxuEfG6-KcbDVsHUA" label="cnx_tunisia_dwh" dataPackage="_QD3ScNxvEfG6-KcbDVsHUA" ContextMode="true" ContextId="_KbQgoNxuEfG6-KcbDVsHUA" contextName="DEV" DatabaseType="PostgreSQL" DriverClass="org.postgresql.Driver" URL="jdbc:postgresql://localhost:5432/tunisia_dwh?" dbVersionString="V9_X" Port="context.PGPORT" Username="context.PGUSER" Password="context.PGPASSWORD" ServerName="context.PGHOST" DatasourceName="" FileFieldName="" SID="context.PGDATABASE" SqlSynthax="" StringQuote="" NullChar="" DbmsId="postgres_id" ProductId="POSTGRESQL" AdditionalParams="context.PGPARAMS" StandardSQL="true" SQLMode="false" UiSchema="context.PGSCHEMA">
+    <taggedValue xmi:id="_QDJgwNxvEfG6-KcbDVsHUA" tag="Is Conn Need Reload" value="false"/>
+    <taggedValue xmi:id="_QDQOcNxvEfG6-KcbDVsHUA" tag="package filter" value=""/>
+    <taggedValue xmi:id="_QDT40NxvEfG6-KcbDVsHUA" tag="Status" value=""/>
+    <taggedValue xmi:id="_QDT40dxvEfG6-KcbDVsHUA" tag="Version" value="0.1"/>
+    <taggedValue xmi:id="_QDT40txvEfG6-KcbDVsHUA" tag="Purpose" value=""/>
+    <taggedValue xmi:id="_QDT409xvEfG6-KcbDVsHUA" tag="Description" value=""/>
+    <taggedValue xmi:id="_QDT41NxvEfG6-KcbDVsHUA" tag="Author" value=""/>
+    <taggedValue xmi:id="_QDT41dxvEfG6-KcbDVsHUA" tag="otherParameter"/>
+    <taggedValue xmi:id="_QDhUMNxvEfG6-KcbDVsHUA" tag="DB ProductName" value="PostgreSQL"/>
+    <taggedValue xmi:id="_QDhUMdxvEfG6-KcbDVsHUA" tag="DB ProductVersion" value="18.1"/>
+    <taggedValue xmi:id="_QDiiUNxvEfG6-KcbDVsHUA" tag="DB IdentifierQuoteString" value="&quot;"/>
+    <parameters xmi:id="_QDJgwdxvEfG6-KcbDVsHUA" key="CONN_PARA_KEY_USERNAME" value="context.PGUSER"/>
+    <parameters xmi:id="_jrNsgNxvEfG6-KcbDVsHUA" key="CONN_PARA_KEY_MAPRDB_TABLE_NS_MAPPING" value=""/>
+  </TalendMetadata:DatabaseConnection>
+  <orgomg.cwm.resource.relational:Catalog xmi:id="_QD3ScNxvEfG6-KcbDVsHUA" name="tunisia_dwh" dataManager="_QDI5sNxvEfG6-KcbDVsHUA">
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_QD3ScdxvEfG6-KcbDVsHUA" name="audit"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_QD3SctxvEfG6-KcbDVsHUA" name="dwh"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_QD3Sc9xvEfG6-KcbDVsHUA" name="information_schema"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_QD3SdNxvEfG6-KcbDVsHUA" name="pg_catalog"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_QD3SddxvEfG6-KcbDVsHUA" name="public"/>
+    <ownedElement xsi:type="orgomg.cwm.resource.relational:Schema" xmi:id="_QD3SdtxvEfG6-KcbDVsHUA" name="staging"/>
+  </orgomg.cwm.resource.relational:Catalog>
+</xmi:XMI>
