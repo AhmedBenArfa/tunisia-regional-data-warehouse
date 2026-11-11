@@ -114,6 +114,10 @@ Les fichiers Markdown sont la référence ; les PDF en sont générés par `pyth
 
 *Le premier job, `J01_Referentiel_Geo`, après exécution : 24 gouvernorats chargés dans la dimension, 0 rejet ([guide détaillé](docs/guides/02_job_J01_referentiel_geo.md)).*
 
+![Job J02_Synonymes après exécution : 77 libellés lus, 53 synonymes chargés, 0 rejet](docs/img/J02_execution.png)
+
+*Le deuxième job, `J02_Synonymes`, après exécution : 72 noms officiels et 5 variantes observées, 53 synonymes après dédoublonnage, 0 conflit, 0 rejet ([guide détaillé](docs/guides/03_job_J02_synonymes.md)).*
+
 ## Avancement
 
 - [x] **Phase 0 — Vérifications** : environnement, inventaire, accès aux sources, rapport IDR 2024, découpage en districts
