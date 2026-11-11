@@ -33,6 +33,7 @@ SORTIE = RACINE / "docs" / "pdf"
 SOURCES = [
     "docs/guides/01_mise_en_place.md",
     "docs/guides/02_job_J01_referentiel_geo.md",
+    "docs/guides/03_job_J02_synonymes.md",
     "docs/architecture.md",
     "docs/sources.md",
     "docs/decisions.md",

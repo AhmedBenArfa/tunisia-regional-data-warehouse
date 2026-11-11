@@ -89,7 +89,7 @@ Base `tunisia_dwh`, schémas `staging`, `dwh` et `audit`.
 | `dwh.dim_gouvernorat` | 24 gouvernorats : P-code, noms français, arabe et sans accents, district, région, superficie, coordonnées | **Chargée** par J01 (24 lignes, 0 rejet) ; chef-lieu et côtier à venir |
 | `staging.stg_hdx_admin2` | Copie fidèle de la feuille HDX des gouvernorats | Chargée par J01 |
 | `audit.etl_run_log`, `audit.etl_rejets` | Exécutions et rejets | Créées |
-| `dwh.ref_synonyme_geo` | Libellé source → P-code, par source et par tableau | Prévue |
+| `dwh.ref_synonyme_geo` | Libellé source → P-code, par source et par tableau | **Chargée** par J02 (53 libellés, 0 rejet) |
 | `dwh.dim_zone_touristique`, `dwh.bridge_zone_gouvernorat` | Pont zones touristiques → gouvernorats | Prévues |
 | `dwh.dim_temps`, `dwh.dim_indicateur`, `dwh.dim_source` | Année, catalogue des indicateurs (unité, sens), sources | Prévues |
 | `dwh.fact_indicateur_regional` | Gouvernorat × année × indicateur | Prévue |
@@ -103,6 +103,7 @@ Les définitions de colonnes sont dans les scripts [`sql/`](sql/) (commentaires 
 |---|---|---|
 | [Guide 1 — Mise en place](docs/guides/01_mise_en_place.md) | Base PostgreSQL, configuration `.env`, projet Talend (contextes, connexion, métadonnées), pièges rencontrés | [PDF](docs/pdf/01_mise_en_place.pdf) |
 | [Guide 2 — Job J01](docs/guides/02_job_J01_referentiel_geo.md) | Construction du job du référentiel géographique, composant par composant, et résultats vérifiés | [PDF](docs/pdf/02_job_J01_referentiel_geo.pdf) |
+| [Guide 3 — Job J02](docs/guides/03_job_J02_synonymes.md) | Table de synonymes : routine de normalisation, dédoublonnage, détection des conflits, tests des rejets | [PDF](docs/pdf/03_job_J02_synonymes.pdf) |
 | [Architecture](docs/architecture.md) | Chaîne de traitement, environnement, configuration | [PDF](docs/pdf/architecture.pdf) |
 | [Sources](docs/sources.md) | Inventaire, contenu exploitable, droits | [PDF](docs/pdf/sources.pdf) |
 | [Décisions](docs/decisions.md) | Journal des choix de modélisation et de mapping | [PDF](docs/pdf/decisions.pdf) |
@@ -117,7 +118,7 @@ Les fichiers Markdown sont la référence ; les PDF en sont générés par `pyth
 
 - [x] **Phase 0 — Vérifications** : environnement, inventaire, accès aux sources, rapport IDR 2024, découpage en districts
 - [x] Base, schémas, tables d'audit et dimension gouvernorat (DDL)
-- [ ] **Phase 1 — Référentiel géographique** : job `J01_Referentiel_Geo` **terminé et vérifié** ([guide](docs/guides/02_job_J01_referentiel_geo.md)), table de synonymes à venir
+- [x] **Phase 1 — Référentiel géographique** : job `J01_Referentiel_Geo` **terminé et vérifié** ([guide](docs/guides/02_job_J01_referentiel_geo.md)), table de synonymes `J02_Synonymes` **terminée et vérifiée** ([guide](docs/guides/03_job_J02_synonymes.md))
 - [ ] Phase 2 — Sources simples : agridata, Open-Meteo
 - [ ] Phase 3 — INS : recensements, annuaires, portail de données
 - [ ] Phase 4 — Tourisme : extraction PDF, pont zones → gouvernorats
@@ -131,7 +132,7 @@ Les fichiers Markdown sont la référence ; les PDF en sont générés par `pyth
 |---|---|
 | `J00_Master` | Orchestration, contextes, gestion d'erreurs |
 | `J01_Referentiel_Geo` | Référentiel HDX → `staging` → `dim_gouvernorat`, avec contrôles et flux de rejets — **terminé** |
-| `J02_Synonymes` | Table de synonymes et contrôle |
+| `J02_Synonymes` | Table de synonymes : noms officiels et variantes observées, normalisation, conflits — **terminé** |
 | `J10` à `J15` | Une ingestion par source (agridata, recensements, annuaires, tourisme, météo, IDR) |
 | `J20_Dimensions`, `J30_Fact` | Dimensions et chargement incrémental des faits |
 | `J90_Qualite` | Complétude par source et par année, rejets, contrôles de totaux |
@@ -156,6 +157,7 @@ psql -U postgres -h localhost -f sql/00_creation_base.sql
 psql -f sql/01_audit.sql
 psql -f sql/02_staging_hdx.sql
 psql -f sql/03_dwh_dim_gouvernorat.sql
+psql -f sql/04_dwh_ref_synonyme_geo.sql
 
 # 5. Téléchargement d'un fichier source, consigné dans le manifeste
 python scripts/telecharger.py hdx <url>

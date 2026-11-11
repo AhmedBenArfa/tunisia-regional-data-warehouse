@@ -142,6 +142,24 @@ Chaque règle de mapping, de répartition ou de dédoublonnage est consignée ic
 - **Justification :** des images authentiques et reproductibles (régénérées à chaque export du job), cohérentes avec le principe de présentation honnête du projet.
 - **Impact :** `docs/img/`, guides des jobs, `README.md`, `scripts/generer_pdf.py`, phase 7 du projet.
 
+## D-012 — Table de synonymes géographiques : normalisation, portée, priorité
+
+- **Date :** 2026-11-10
+- **Problème :** chaque source écrit les gouvernorats à sa façon (accents, articles, apostrophes typographiques, arabe avec ou sans hamza). Il faut rattacher chaque libellé à un P-code de façon fiable, traçable et sans multiplier les entrées pour de simples différences d'écriture.
+- **Options :**
+  1. Lister toutes les graphies exactes, sans normalisation.
+  2. Normaliser fortement (supprimer aussi les articles « le », « la », « l' »), pour réduire la liste.
+  3. Normalisation légère et prévisible, plus une liste explicite des variantes réellement observées.
+- **Choix :** option 3.
+  - **Normalisation** (routine Talend `Libelles.normaliser`, copiée à l'identique dans `scripts/normaliser_libelle.py` pour les contrôles) : décomposition Unicode et suppression des signes diacritiques (accents latins, hamza, voyelles arabes), suppression du tatweel, `ى` → `ي` et `ة` → `ه`, minuscules, ponctuation (y compris apostrophes et tirets typographiques) remplacée par une espace, espaces multiples réduites. Exemples : « l’Ariana » → `l ariana`, « Kébili » → `kebili`, « سليانـــة » → `سليانه`.
+  - **Les articles sont conservés** : « Le Kef » et « Kef » restent deux formes distinctes, chacune présente parce qu'elle a été observée. La normalisation ne fait que des transformations sans ambiguïté.
+  - **Contenu de la table** : les noms officiels HDX (français, arabe, sans accents), repris de `dwh.dim_gouvernorat`, plus les variantes de `data/reference/synonymes_geo.csv`. Chaque variante indique où elle a été observée (fichier, page). Aucune variante n'est ajoutée sans avoir été rencontrée dans une source.
+  - **Portée** : chaque synonyme porte une source et un tableau ; `*` signifie « toutes ». Les variantes observées jusqu'ici valent pour toutes les sources. Une entrée propre à une source ou à un tableau servira pour un libellé ambigu (cas prévu pour les tableaux de l'ONTT). Dans les jobs de chargement, la recherche se fait d'abord sur la source et le tableau, puis sur la portée générale.
+  - **Priorité et conflits** : les noms officiels sont lus avant les variantes. Si deux entrées donnent la même forme normalisée pour la même portée, avec le même P-code, la seconde est un simple doublon et elle est écartée ; avec un P-code différent, c'est un conflit : la seconde part dans `audit.etl_rejets`, et le nom officiel l'emporte.
+  - **Cycle de vie** : un libellé inconnu rencontré par un job de chargement part dans les rejets ; après vérification, il est ajouté au fichier CSV avec son origine, et J02 est relancé.
+- **Justification :** une règle courte et explicable en entretien, aucun rapprochement « approximatif » qui pourrait rattacher un libellé au mauvais gouvernorat, et une table où chaque entrée a une origine vérifiable.
+- **Impact :** `dwh.ref_synonyme_geo` (`sql/04_dwh_ref_synonyme_geo.sql`), `data/reference/synonymes_geo.csv`, routine Talend `Libelles`, job `J02_Synonymes`, tous les jobs de chargement de sources.
+
 ---
 
 <!-- Modèle d'entrée

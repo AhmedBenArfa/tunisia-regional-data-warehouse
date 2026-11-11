@@ -25,4 +25,27 @@
     "version" : "Latest",
     "type" : "schema"
   } ]
+}, {
+  "baseItem" : {
+    "id" : "_f6PHoN1TEfGIzd3AOeUWLw",
+    "version" : "0.1",
+    "type" : "job"
+  },
+  "relatedItems" : [ {
+    "id" : "_KbQgoNxuEfG6-KcbDVsHUA",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_iHny0NxvEfG6-KcbDVsHUA",
+    "version" : "Latest",
+    "type" : "context"
+  }, {
+    "id" : "_bZqigNxuEfG6-KcbDVsHUA",
+    "version" : "Latest",
+    "type" : "property"
+  }, {
+    "id" : "Libelles",
+    "version" : "Latest",
+    "type" : "routine"
+  } ]
 } ]

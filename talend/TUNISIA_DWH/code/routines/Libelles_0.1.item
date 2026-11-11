@@ -1,0 +1,36 @@
+package routines;
+
+import java.text.Normalizer;
+import java.util.Locale;
+
+/*
+ * Normalisation des libellés géographiques (décision D-012).
+ * Copie identique en Python : scripts/normaliser_libelle.py
+ */
+public class Libelles {
+
+    /**
+     * normaliser : forme de comparaison d'un libellé de gouvernorat.
+     *
+     * {talendTypes} String
+     *
+     * {Category} User Defined
+     *
+     * {param} string("l’Ariana") libelle : libellé tel que lu dans la source
+     *
+     * {example} normaliser("l’Ariana") # "l ariana"
+     */
+    public static String normaliser(String libelle) {
+        if (libelle == null) {
+            return null;
+        }
+        String s = Normalizer.normalize(libelle, Normalizer.Form.NFD);
+        s = s.replaceAll("\\p{M}", "");                        // accents, hamza, voyelles arabes
+        s = s.replace("\u0640", "");                           // tatweel
+        s = s.replace('\u0649', '\u064A').replace('\u0629', '\u0647'); // alif maqsura -> ya, ta marbuta -> ha
+        s = s.toLowerCase(Locale.ROOT);
+        s = s.replaceAll("[\\p{Punct}\u2018\u2019\u2013\u2014\u00A0]", " "); // ponctuation, apostrophes et tirets typographiques
+        s = s.replaceAll("(?U)\\s+", " ").trim();
+        return s.isEmpty() ? null : s;
+    }
+}

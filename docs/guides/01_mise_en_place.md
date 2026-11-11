@@ -176,5 +176,6 @@ Revenir en arrière dans l'assistant réinitialise les types : ils ont été cor
 | *Finish* grisé | Dernière cellule non validée | Entrée avant *Finish* |
 | Assistant Excel bloqué à 18 colonnes | Structure lue sur la première feuille | Ajouter les colonnes à la main |
 | Types du schéma Excel perdus | Retour arrière dans l'assistant | Les corriger dans *Éditer le schéma* |
+| Après l'export d'un job, les autres jobs ont disparu de `talend/` | *Exporter des éléments* vers un répertoire remplace son contenu par les seuls éléments sélectionnés | Exporter **tous les jobs ensemble**, avec leurs dépendances (contextes, connexion, métadonnées, routines) |
 
 Précaution prise d'emblée (pas un incident) : aucun commentaire dans `.env`, car le chargement implicite lirait chaque ligne comme une variable.
